@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maryland Renaissance Festival - AVAILABLE Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #8B4513, #D2691E, #F4A460);
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .GMHeader {
+            background-color: #2E7D32;
+            color: white;
+            padding: 15px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .main-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        
+        .calDate {
+            min-height: 400px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        .calendarDayHeader {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 2px 5px 2px;
+            text-align: center;
+            font-weight: bold;
+            width: 14%;
+        }
+        
+        .calendarDay {
+            border: 1px solid #ddd;
+            padding: 8px;
+            vertical-align: top;
+            text-align: left;
+            width: 14%;
+            height: 80px;
+            position: relative;
+        }
+        
+        .today {
+            background-color: #fffacd;
+            border: 2px solid #ffd700;
+        }
+        
+        .FullCalAvailTemplate, .FullCalNotAvailTemplate {
+            text-align: center;
+            width: 100%;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .FullCalAvailTemplate img, .FullCalNotAvailTemplate img {
+            width: 40px;
+            transition: transform 0.2s;
+        }
+        
+        .GMHoverClass {
+            position: relative;
+        }
+        
+        .GMHoverClass:hover::after {
+            content: attr(hovermsg);
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            z-index: 1000;
+        }
+        
+        .highlight-sept-27 {
+            background-color: #e8f5e8 !important;
+            border: 2px solid #4caf50 !important;
+        }
+        
+        .test-status {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #e8f5e8;
+            border: 1px solid #4caf50;
+            border-radius: 5px;
+            color: #2e7d32;
+            font-weight: bold;
+            text-align: center;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="GMHeader">Festival Gates Open At 10:00 am</div>
+    
+    <div class="main-container">
+        <div class="test-status">
+            🟢 STATIC TEST PAGE - SEPTEMBER 27TH SET TO AVAILABLE
+        </div>
+        
+        <div id="FullCal">
+            <div class="FullCalContainer" id="FullCalContainer">
+                <table border="0" cellpadding="4" cellspacing="0" width="100%">
+                    <tr>
+                        <td align="center" style="font-size: 20px; font-weight: bold;" colspan="3">
+                            September 2025
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <table class="calDate" cellspacing="0" cellpadding="2" border="0">
+                                <tr>
+                                    <th class="calendarDayHeader" align="center">Sun</th>
+                                    <th class="calendarDayHeader" align="center">Mon</th>
+                                    <th class="calendarDayHeader" align="center">Tue</th>
+                                    <th class="calendarDayHeader" align="center">Wed</th>
+                                    <th class="calendarDayHeader" align="center">Thu</th>
+                                    <th class="calendarDayHeader" align="center">Fri</th>
+                                    <th class="calendarDayHeader" align="center">Sat</th>
+                                </tr>
+                                <tr>
+                                    <td class="calendarDay" style="color:#ccc;">31</td>
+                                    <td class="calendarDay">1</td>
+                                    <td class="calendarDay">2</td>
+                                    <td class="calendarDay">3</td>
+                                    <td class="calendarDay">4</td>
+                                    <td class="calendarDay">5</td>
+                                    <td class="calendarDay">6</td>
+                                </tr>
+                                <tr>
+                                    <td class="calendarDay">7</td>
+                                    <td class="calendarDay">8</td>
+                                    <td class="calendarDay">9</td>
+                                    <td class="calendarDay">10</td>
+                                    <td class="calendarDay">11</td>
+                                    <td class="calendarDay">12</td>
+                                    <td class="calendarDay">13</td>
+                                </tr>
+                                <tr>
+                                    <td class="calendarDay">14</td>
+                                    <td class="calendarDay">15</td>
+                                    <td class="calendarDay">16</td>
+                                    <td class="calendarDay">17</td>
+                                    <td class="calendarDay">18</td>
+                                    <td class="calendarDay">19</td>
+                                    <td class="calendarDay">20</td>
+                                </tr>
+                                <tr>
+                                    <td class="calendarDay">21</td>
+                                    <td class="calendarDay today">22</td>
+                                    <td class="calendarDay">23</td>
+                                    <td class="calendarDay">24</td>
+                                    <td class="calendarDay">25</td>
+                                    <td class="calendarDay">26</td>
+                                    <!-- Sept 27 - PERMANENTLY SET TO AVAILABLE -->
+                                    <td class="calendarDay highlight-sept-27">27
+                                        <div class="FullCalAvailTemplate GMHoverClass" id="Cal09272025" datecalendar="9/27/2025" favailable="true" hovermsg="Still available">
+                                            <img src="https://www.gatemastertickets.com/ecomimages/CalendarAvail.png" width="40">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="calendarDay">28</td>
+                                    <td class="calendarDay">29</td>
+                                    <td class="calendarDay">30</td>
+                                    <td class="calendarDay" style="color:#ccc;">1</td>
+                                    <td class="calendarDay" style="color:#ccc;">2</td>
+                                    <td class="calendarDay" style="color:#ccc;">3</td>
+                                    <td class="calendarDay" style="color:#ccc;">4</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div style="margin: 20px 0; padding: 15px; background-color: #fff3cd; border: 1px solid #ffc107; border-radius: 5px;">
+            <h3 style="margin-top: 0; color: #856404;">🧪 Static Test Page</h3>
+            <p><strong>September 27th is PERMANENTLY set to AVAILABLE</strong></p>
+            <p>This page always shows <code>favailable="true"</code> and the green checkmark image.</p>
+            <p>Use this to test if the monitor correctly detects the available status.</p>
+        </div>
+    </div>
+</body>
+</html>
