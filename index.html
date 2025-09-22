@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maryland Renaissance Festival - Peak Season Tickets</title>
+    <title>Maryland Renaissance Festival - Test Calendar</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,103 +12,140 @@
             padding: 20px;
         }
         
-        .header {
+        .GMHeader {
             background-color: #2E7D32;
             color: white;
-            padding: 10px 20px;
+            padding: 15px 20px;
+            font-size: 18px;
+            font-weight: bold;
             margin-bottom: 20px;
         }
         
-        .header h1 {
-            margin: 0;
-            font-size: 18px;
-        }
-        
-        .calendar-container {
+        .main-container {
             background-color: white;
             border-radius: 10px;
             padding: 20px;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
         
-        .month-header {
-            text-align: center;
+        .info-section {
             margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
         }
         
-        .month-nav {
-            font-size: 24px;
-            cursor: pointer;
-            padding: 10px;
-            user-select: none;
+        .info-section p {
+            margin: 8px 0;
+            line-height: 1.4;
         }
         
-        .month-title {
-            font-size: 20px;
-            font-weight: bold;
+        .FullCalContainer {
+            margin: 20px 0;
         }
         
-        .calendar-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 1px;
-            border: 2px solid #333;
+        .calNav {
+            width: 50px;
+            display: inline-block;
         }
         
-        .day-header {
+        .calNav a {
+            color: #000;
+            text-decoration: none;
+            font-size: 32px;
+        }
+        
+        .calNav a:hover {
+            color: #666;
+        }
+        
+        .calDate {
+            min-height: 400px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        .calendarDayHeader {
             background-color: #4CAF50;
             color: white;
-            padding: 10px;
+            padding: 10px 2px 5px 2px;
             text-align: center;
             font-weight: bold;
-            font-size: 14px;
+            width: 14%;
         }
         
-        .day-cell {
-            background-color: #f9f9f9;
+        .calendarDay {
             border: 1px solid #ddd;
+            padding: 8px;
+            vertical-align: top;
+            text-align: left;
+            width: 14%;
             height: 80px;
             position: relative;
-            display: flex;
-            align-items: flex-start;
-            justify-content: flex-start;
-            padding: 5px;
         }
         
-        .day-number {
-            font-weight: bold;
-            font-size: 16px;
+        .today {
+            background-color: #fffacd;
+            border: 2px solid #ffd700;
         }
         
-        .sold-out-indicator {
+        .FullCalAvailTemplate, .FullCalNotAvailTemplate {
+            text-align: center;
+            width: 100%;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .FullCalAvailTemplate img, .FullCalNotAvailTemplate img {
+            width: 40px;
+            transition: transform 0.2s;
+        }
+        
+        .FullCalAvailTemplate:hover img {
+            transform: scale(1.1);
+        }
+        
+        .GMHoverClass {
+            position: relative;
+        }
+        
+        .GMHoverClass:hover::after {
+            content: attr(hovermsg);
             position: absolute;
-            top: 50%;
+            bottom: -30px;
             left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 30px;
-            color: #d32f2f;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            z-index: 1000;
         }
         
-        .available-indicator {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 30px;
-            color: #2e7d32;
+        .refundpolicy {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #666;
+            line-height: 1.4;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
         }
         
-        .day-27 {
-            background-color: #fff3e0;
+        .refundpolicy h1 {
+            font-size: 12px;
+            font-weight: normal;
+            margin: 0;
         }
         
         .test-controls {
-            margin-top: 20px;
+            margin: 20px 0;
             padding: 20px;
             background-color: #fff3cd;
             border: 1px solid #ffc107;
@@ -124,11 +161,12 @@
             background-color: #007bff;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 10px 15px;
             margin: 5px;
             border-radius: 5px;
             cursor: pointer;
             font-weight: bold;
+            font-size: 14px;
         }
         
         button:hover {
@@ -136,7 +174,7 @@
         }
         
         .status-display {
-            margin-top: 10px;
+            margin-top: 15px;
             padding: 10px;
             border-radius: 5px;
             font-weight: bold;
@@ -154,13 +192,6 @@
             border: 1px solid #4caf50;
         }
         
-        .refund-info {
-            margin-top: 20px;
-            font-size: 12px;
-            color: #666;
-            line-height: 1.4;
-        }
-        
         .timestamp {
             position: fixed;
             top: 10px;
@@ -171,102 +202,152 @@
             border-radius: 5px;
             font-family: monospace;
             font-size: 12px;
+            z-index: 1000;
+        }
+        
+        .highlight-sept-27 {
+            background-color: #fff3e0 !important;
+            border: 2px solid #ff9800 !important;
         }
     </style>
 </head>
 <body>
     <div class="timestamp" id="timestamp"></div>
     
-    <div class="header">
-        <h1>Peak Season Tickets (September 13 thru October 19)</h1>
-    </div>
+    <div class="GMHeader">Festival Gates Open At 10:00 am</div>
     
-    <div class="calendar-container">
-        <div class="month-header">
-            <div class="month-nav">←</div>
-            <div class="month-title">September 2025</div>
-            <div class="month-nav">→</div>
+    <div class="main-container">
+        <div class="info-section">
+            <p><strong>Your Festival Ticket Is Valid For Arrival Any Time After 10:00 am</strong></p>
+            <p><strong>Print your ticket at home and proceed directly to the entrance gates</strong></p>
+            <p><strong>&nbsp; or</strong></p>
+            <p><strong>Have your ticket scanned at the entrance gate on your phone</strong></p>
+            <p><strong>The festival is open rain or shine.</strong></p>
+            <br>
+            <p>Tickets are <strong>not for resale.</strong> The festival offers a direct refund process and legitimate process for resale through our ticket system, tickets purchased or obtained through any third-party source will not be honored.</p>
         </div>
         
-        <div class="calendar-grid">
-            <div class="day-header">SUN</div>
-            <div class="day-header">MON</div>
-            <div class="day-header">TUE</div>
-            <div class="day-header">WED</div>
-            <div class="day-header">THU</div>
-            <div class="day-header">FRI</div>
-            <div class="day-header">SAT</div>
-            
-            <!-- Week 1 -->
-            <div class="day-cell"><div class="day-number"></div></div>
-            <div class="day-cell"><div class="day-number">1</div></div>
-            <div class="day-cell"><div class="day-number">2</div></div>
-            <div class="day-cell"><div class="day-number">3</div></div>
-            <div class="day-cell"><div class="day-number">4</div></div>
-            <div class="day-cell"><div class="day-number">5</div></div>
-            <div class="day-cell"><div class="day-number">6</div></div>
-            
-            <!-- Week 2 -->
-            <div class="day-cell"><div class="day-number">7</div></div>
-            <div class="day-cell"><div class="day-number">8</div></div>
-            <div class="day-cell"><div class="day-number">9</div></div>
-            <div class="day-cell"><div class="day-number">10</div></div>
-            <div class="day-cell"><div class="day-number">11</div></div>
-            <div class="day-cell"><div class="day-number">12</div></div>
-            <div class="day-cell"><div class="day-number">13</div></div>
-            
-            <!-- Week 3 -->
-            <div class="day-cell"><div class="day-number">14</div></div>
-            <div class="day-cell"><div class="day-number">15</div></div>
-            <div class="day-cell"><div class="day-number">16</div></div>
-            <div class="day-cell"><div class="day-number">17</div></div>
-            <div class="day-cell"><div class="day-number">18</div></div>
-            <div class="day-cell"><div class="day-number">19</div></div>
-            <div class="day-cell"><div class="day-number">20</div></div>
-            
-            <!-- Week 4 - The important one! -->
-            <div class="day-cell">
-                <div class="day-number">21</div>
-                <div class="sold-out-indicator">🚫</div>
+        <div id="FullCal">
+            <div class="FullCalContainer" id="FullCalContainer">
+                <table border="0" cellpadding="4" cellspacing="0" width="100%">
+                    <tr>
+                        <td align="left">
+                            <div class="calNav"><a href="javascript:void(0);" onclick="alert('Navigation disabled in test mode')">←</a></div>
+                        </td>
+                        <td align="center" style="font-size: 20px; font-weight: bold;">
+                            September 2025
+                        </td>
+                        <td align="right">
+                            <div class="calNav"><a href="javascript:void(0);" onclick="alert('Navigation disabled in test mode')">→</a></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <table class="calDate" cellspacing="0" cellpadding="2" border="0">
+                                <tr>
+                                    <th class="calendarDayHeader" align="center">Sun</th>
+                                    <th class="calendarDayHeader" align="center">Mon</th>
+                                    <th class="calendarDayHeader" align="center">Tue</th>
+                                    <th class="calendarDayHeader" align="center">Wed</th>
+                                    <th class="calendarDayHeader" align="center">Thu</th>
+                                    <th class="calendarDayHeader" align="center">Fri</th>
+                                    <th class="calendarDayHeader" align="center">Sat</th>
+                                </tr>
+                                <tr>
+                                    <td class="calendarDay" style="color:#ccc;">31</td>
+                                    <td class="calendarDay">1</td>
+                                    <td class="calendarDay">2</td>
+                                    <td class="calendarDay">3</td>
+                                    <td class="calendarDay">4</td>
+                                    <td class="calendarDay">5</td>
+                                    <td class="calendarDay">6</td>
+                                </tr>
+                                <tr>
+                                    <td class="calendarDay">7</td>
+                                    <td class="calendarDay">8</td>
+                                    <td class="calendarDay">9</td>
+                                    <td class="calendarDay">10</td>
+                                    <td class="calendarDay">11</td>
+                                    <td class="calendarDay">12</td>
+                                    <td class="calendarDay">13</td>
+                                </tr>
+                                <tr>
+                                    <td class="calendarDay">14</td>
+                                    <td class="calendarDay">15</td>
+                                    <td class="calendarDay">16</td>
+                                    <td class="calendarDay">17</td>
+                                    <td class="calendarDay">18</td>
+                                    <td class="calendarDay">19</td>
+                                    <td class="calendarDay">20</td>
+                                </tr>
+                                <tr>
+                                    <!-- Sept 21 - Available example -->
+                                    <td class="calendarDay">21
+                                        <div class="FullCalAvailTemplate GMHoverClass" id="Cal09212025" datecalendar="9/21/2025" favailable="true" hovermsg="Still available">
+                                            <img src="https://www.gatemastertickets.com/ecomimages/CalendarAvail.png" width="40">
+                                        </div>
+                                    </td>
+                                    <td class="calendarDay today">22</td>
+                                    <td class="calendarDay">23</td>
+                                    <td class="calendarDay">24</td>
+                                    <td class="calendarDay">25</td>
+                                    <td class="calendarDay">26</td>
+                                    <!-- Sept 27 - THE TARGET DATE -->
+                                    <td class="calendarDay highlight-sept-27">27
+                                        <div class="FullCalNotAvailTemplate GMHoverClass" id="Cal09272025" datecalendar="9/27/2025" favailable="false" hovermsg="Sorry, there is no availability for this date.">
+                                            <img src="https://www.gatemastertickets.com/ecomimages/CalendarUnavail.png" width="40" style="transition: none;">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <!-- Sept 28 - Sold out -->
+                                    <td class="calendarDay">28
+                                        <div class="FullCalNotAvailTemplate GMHoverClass" id="Cal09282025" datecalendar="9/28/2025" favailable="false" hovermsg="Sorry, there is no availability for this date.">
+                                            <img src="https://www.gatemastertickets.com/ecomimages/CalendarUnavail.png" width="40">
+                                        </div>
+                                    </td>
+                                    <td class="calendarDay">29</td>
+                                    <td class="calendarDay">30</td>
+                                    <td class="calendarDay" style="color:#ccc;">1</td>
+                                    <td class="calendarDay" style="color:#ccc;">2</td>
+                                    <td class="calendarDay" style="color:#ccc;">3</td>
+                                    <td class="calendarDay" style="color:#ccc;">4</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
             </div>
-            <div class="day-cell"><div class="day-number">22</div></div>
-            <div class="day-cell"><div class="day-number">23</div></div>
-            <div class="day-cell"><div class="day-number">24</div></div>
-            <div class="day-cell"><div class="day-number">25</div></div>
-            <div class="day-cell"><div class="day-number">26</div></div>
-            <!-- September 27th - This is what we're monitoring! -->
-            <div class="day-cell day-27" id="day-27">
-                <div class="day-number">27</div>
-                <div class="sold-out-indicator" id="status-indicator">🚫</div>
-            </div>
-            
-            <!-- Week 5 -->
-            <div class="day-cell">
-                <div class="day-number">28</div>
-                <div class="sold-out-indicator">🚫</div>
-            </div>
-            <div class="day-cell"><div class="day-number">29</div></div>
-            <div class="day-cell"><div class="day-number">30</div></div>
-            <div class="day-cell"><div class="day-number"></div></div>
-            <div class="day-cell"><div class="day-number"></div></div>
-            <div class="day-cell"><div class="day-number"></div></div>
-            <div class="day-cell"><div class="day-number"></div></div>
-        </div>
-        
-        <div class="refund-info">
-            Only the customer who purchased tickets through our ticket system may submit for a limited refund, less convenience and processing fees, and only up to 11:59 PM Thursday before the event date printed on the ticket. Thereafter tickets are non-refundable. Tickets purchased after 11:59 PM Thursday for the upcoming weekend are not-refundable. Refunds will only be issued to the original form of payment on our ticket system. Each ticket refund will be reduced by $5.00 for the ticket reservation, convenience and processing fees for securing and refunding the tickets. Only single day tickets or the entire group purchase of group tickets are eligible for a refund. Fractions thereof are not refundable. Annual 4-Day, 7-Day and 19-Day tickets are not eligible for refunds.
         </div>
         
         <div class="test-controls">
             <h3>🧪 Testing Controls for September 27th</h3>
-            <button onclick="setSoldOut()">Set Sold Out (🚫)</button>
-            <button onclick="setAvailable()">Set Available (✅)</button>
+            <p><strong>Target Element:</strong> <code>id="Cal09272025"</code> (exact match to real website)</p>
+            <button onclick="setSoldOut()">Set Sold Out (Real PNG)</button>
+            <button onclick="setAvailable()">Set Available (Real PNG)</button>
             <button onclick="toggleStatus()">Toggle Status</button>
             <button onclick="startAutoToggle()" id="autoBtn">Start Auto-Toggle (30s)</button>
             
             <div class="status-display" id="statusDisplay">
                 Current Status: <span id="currentStatus">SOLD OUT</span>
             </div>
+            
+            <div style="margin-top: 15px; font-size: 12px; color: #666;">
+                <strong>Detection Points:</strong><br>
+                • <code>favailable="true"</code> = Available<br>
+                • <code>favailable="false"</code> = Sold Out<br>
+                • Images: CalendarAvail.png vs CalendarUnavail.png
+            </div>
+        </div>
+        
+        <div class="refundpolicy">
+            <h1>Only the customer who purchased tickets through our ticket system may submit for a limited refund, less convenience and processing fees, and only up to 11:59 PM Thursday before the event date printed on the ticket. Thereafter tickets are non-refundable. Tickets purchased after 11:59 PM Thursday for the upcoming weekend are not-refundable. Refunds will only be issued to the original form of payment on our ticket system.
+
+            Each ticket refund will be reduced by $5.00 for the ticket reservation, convenience and processing fees for securing and refunding the tickets.
+
+            Only single day tickets or the entire group purchase of group tickets are eligible for a limited refund. Fractions thereof are not refundable.
+
+            Annual 4-Day, 7-Day and 19-Day tickets are not eligible for refunds.</h1>
         </div>
     </div>
     
@@ -285,30 +366,56 @@
         
         function setSoldOut() {
             currentStatus = 'sold-out';
-            const indicator = document.getElementById('status-indicator');
-            indicator.textContent = '🚫';
-            indicator.className = 'sold-out-indicator';
+            const element = document.getElementById('Cal09272025');
             
+            // Update the div classes and attributes to match sold out state
+            element.className = 'FullCalNotAvailTemplate GMHoverClass';
+            element.setAttribute('favailable', 'false');
+            element.setAttribute('hovermsg', 'Sorry, there is no availability for this date.');
+            
+            // Update the image
+            const img = element.querySelector('img');
+            img.src = 'https://www.gatemastertickets.com/ecomimages/CalendarUnavail.png';
+            
+            // Update status display
             const statusDisplay = document.getElementById('statusDisplay');
             statusDisplay.className = 'status-display status-sold-out';
             document.getElementById('currentStatus').textContent = 'SOLD OUT';
             
-            console.log('September 27th status: SOLD OUT (🚫)');
-            logStatusChange();
+            console.log('September 27th status: SOLD OUT (CalendarUnavail.png)');
+            console.log('Element attributes:', {
+                id: element.id,
+                favailable: element.getAttribute('favailable'),
+                className: element.className,
+                imageSource: img.src
+            });
         }
         
         function setAvailable() {
             currentStatus = 'available';
-            const indicator = document.getElementById('status-indicator');
-            indicator.textContent = '✅';
-            indicator.className = 'available-indicator';
+            const element = document.getElementById('Cal09272025');
             
+            // Update the div classes and attributes to match available state
+            element.className = 'FullCalAvailTemplate GMHoverClass';
+            element.setAttribute('favailable', 'true');
+            element.setAttribute('hovermsg', 'Still available');
+            
+            // Update the image
+            const img = element.querySelector('img');
+            img.src = 'https://www.gatemastertickets.com/ecomimages/CalendarAvail.png';
+            
+            // Update status display
             const statusDisplay = document.getElementById('statusDisplay');
             statusDisplay.className = 'status-display status-available';
             document.getElementById('currentStatus').textContent = 'AVAILABLE';
             
-            console.log('September 27th status: AVAILABLE (✅)');
-            logStatusChange();
+            console.log('September 27th status: AVAILABLE (CalendarAvail.png)');
+            console.log('Element attributes:', {
+                id: element.id,
+                favailable: element.getAttribute('favailable'),
+                className: element.className,
+                imageSource: img.src
+            });
         }
         
         function toggleStatus() {
@@ -334,14 +441,6 @@
                 btn.style.backgroundColor = '#dc3545';
                 console.log('Auto-toggle started - status will change every 30 seconds');
             }
-        }
-        
-        function logStatusChange() {
-            const timestamp = new Date().toLocaleString('en-US', { 
-                timeZone: 'America/New_York',
-                hour12: false 
-            });
-            console.log(`[${timestamp}] Status changed to: ${currentStatus.toUpperCase()}`);
         }
         
         // Initialize
